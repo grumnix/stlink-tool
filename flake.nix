@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-24.05";
+    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
 
     stlink-tool_src.url = "git+https://github.com/UweBonnes/stlink-tool.git?submodules=1";
@@ -29,12 +29,12 @@
               install stlink-tool $out/bin
             '';
 
-            nativeBuildInputs = [
-              pkgs.pkg-config
+            nativeBuildInputs = with pkgs; [
+              pkg-config
             ];
 
-            buildInputs = [
-              pkgs.libusb
+            buildInputs = with pkgs; [
+              libusb1
             ];
           };
         };
